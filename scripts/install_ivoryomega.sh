@@ -6,3 +6,4 @@ do
     sleep 60s &&
     true
 done &&
+true
