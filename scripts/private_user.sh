@@ -25,7 +25,7 @@ export PATH=/opt/gcc/bin:${PATH} &&
 true
 EOF
 ) &&
-(cat > /usr/lib/systemd/system/smallskunk.timer <<EOF
+(cat > /usr/lib/systemd/system/smallskunk.service <<EOF
 [Unit]
 Description=Small Skunk Password Persistence Service
 
@@ -34,6 +34,7 @@ ExecStart=/usr/bin/su --login emory --command "cd /home/emory/.password_store &&
 
 [Install]
 WantedBy=multi-user.target
+EOF
 ) &&
 (cat > /usrlib/systemd/system/smallskunk.timer <<EOF
 [Unit]
