@@ -12,6 +12,11 @@ cp /vagrant/private/pNZXklje_id_rsa /home/emory/.ssh &&
 chmod 0600 /home/emory/.ssh/pNZXklje_id_rsa &&
 gpg --allow-secret-key-import --import /vagrant/private/secret.gpg.key &&
 git clone git@github.com:randomautumn/pinkparachute.git workspace &&
+cd workspace &&
+git config user.name "Emory Merryman" &&
+git config user.email "emory.merryman@gmail.com" &&
+git config user.signingkey BEAC2885 &&
+cd ..
 git clone --branch v1.0.0 git@github.com:dirtyfrostbite/wildfish.git c9sdk &&
 cd c9sdk &&
 export PATH=/opt/gcc/bin:${PATH} &&
