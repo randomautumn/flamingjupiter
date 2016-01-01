@@ -32,6 +32,7 @@ passwd --lock emory &&
 mkdir /home/emory/.ssh &&
 chmod 0700 /home/emory/.ssh &&
 echo -e "Host github.com\nUser git\nIdentityFile /home/emory/.ssh/pNZXklje_id_rsa\nStrictHostKeyChecking no" > /home/emory/.ssh/config &&
+echo -e "Host host\nHostName 192.168.2.6\nUser emorymerryman\nStrictHostKeyChecking no" >> /home/emory/.ssh/config && 
 chmod 0600 /home/emory/.ssh/config &&
 cp /vagrant/private/pNZXklje_id_rsa /home/emory/.ssh &&
 chmod 0600 /home/emory/.ssh/pNZXklje_id_rsa &&
@@ -41,6 +42,9 @@ git clone git@github.com:randomautumn/flamingjupiter.git flamingjupiter &&
 cd flamingjupiter &&
 git config user.name "Emory Merryman" &&
 git config user.email "emory.merryman@gmail.com" &&
+git config user.signingkey BEAC2885 &&
+git remote add host host:/Users/emorymerryman/repositories/flamingjupiter &&
+cd .. &&
 if [ ! -d /home/emory/c9sdk ]
 then
 git clone --branch v1.0.0 git@github.com:dirtyfrostbite/wildfish.git c9sdk &&
