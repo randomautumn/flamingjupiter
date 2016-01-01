@@ -1,6 +1,6 @@
 #!/bin/bash
 
-(cat > /usr/lib/systemd/system/magentaknife.service <<
+(cat > /usr/lib/systemd/system/magentaknife.service <<EOF
 [Unit]
 Description=Magenta Knife Cloud9 Service
 

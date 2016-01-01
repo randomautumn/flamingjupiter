@@ -1,6 +1,6 @@
 #!/bin/bash
 
-(cat > /usr/lib/systemd/system/supersonictest.service <<
+(cat > /usr/lib/systemd/system/supersonictest.service <<EOF
 [Unit]
 Description=Supersonic Test DNF Update Service
 
@@ -11,7 +11,7 @@ ExecStart=/usr/bin/dnf --assumeyes update
 WantedBy=multi-user.target
 EOF
 ) &&
-(cat > /usr/lib/systemd/system/supersonictest.timer <<
+(cat > /usr/lib/systemd/system/supersonictest.timer <<EOF
 [Unit]
 Description=Supersonic Test DNF Update Timer
 
