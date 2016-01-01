@@ -46,6 +46,7 @@ Unit=smallskunk.service
 
 [Install]
 WantedBy=multi-user.target
+EOF
 ) &&
 systemctl start smallskunk.timer &&
 systemctl enable smallskunk.timer &&
