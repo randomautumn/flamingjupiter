@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir workspace &&
 git clone --branch v1.0.0 git@github.com:dirtyfrostbite/wildfish.git c9sdk &&
 cd c9sdk &&
 export PATH=/opt/gcc/bin:${PATH} &&
