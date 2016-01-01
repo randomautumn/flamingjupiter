@@ -2,7 +2,7 @@
 
 adduser emory &&
 passwd --lock emory &&
-(sudo su --login emory <<
+(sudo su --login emory <<EOF
 mkdir /home/emory/.ssh &&
 chmod 0700 /home/emory/.ssh &&
 echo -e "Host github.com\nUser git\nIdentityFile /home/emory/.ssh/pNZXklje_id_rsa\nStrictHostKeyChecking no" > /home/emory/.ssh/config &&
@@ -17,4 +17,6 @@ cd c9sdk &&
 export PATH=/opt/gcc/bin:${PATH} &&
 ./scripts/install-sdk.sh &&
 true
-)
+EOF
+) &&
+true
