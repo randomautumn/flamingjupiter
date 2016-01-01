@@ -1,5 +1,9 @@
 #!/bin/bash
 
+git clone --branch v1.0.0 git@github.com:dirtyfrostbite/wildfish.git c9sdk &&
+cd c9sdk &&
+export PATH=/opt/gcc/bin:${PATH} &&
+./scripts/install-sdk.sh &&
 (cat > /usr/lib/systemd/system/magentaknife.service <<EOF
 [Unit]
 Description=Magenta Knife Cloud9 Service
