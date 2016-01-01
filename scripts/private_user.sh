@@ -25,7 +25,7 @@ export PATH=/opt/gcc/bin:${PATH} &&
 true
 EOF
 ) &&
-(cat > /usr/lib/systemd/system/smallskunk.service <<EOF
+(cat > /usr/lib/systemd/system/smallskunk.timer <<EOF
 [Unit]
 Description=Small Skunk Password Persistence Service
 
