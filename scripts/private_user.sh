@@ -5,8 +5,9 @@ passwd --lock emory &&
 (sudo su --login emory <<EOF
 mkdir /home/emory/.ssh &&
 chmod 0700 /home/emory/.ssh &&
-echo -e "Host github.com\nUser git\nIdentityFile /home/emory/.ssh/pNZXklje_id_rsa\nStrictHostKeyChecking no" > /home/emory/.ssh/config &&
-echo -e "Host host\nHostName 192.168.2.6\nUser emorymerryman\nStrictHostKeyChecking no" >> /home/emory/.ssh/config && 
+echo -e "Host github.com\nUser git\nIdentityFile /home/emory/.ssh/pNZXklje_id_rsa\nStrictHostKeyChecking no\n" > /home/emory/.ssh/config &&
+echo -e "Host gitlab\nHostName 192.168.50.201\nUser git\nIdentityFile /home/emory/.ssh/pNZXklje_id_rsa\nStrictHostKeyChecking no\n" > /home/emory/.ssh/config &&
+echo -e "Host host\nHostName 192.168.2.6\nUser emorymerryman\nStrictHostKeyChecking no\n" >> /home/emory/.ssh/config && 
 chmod 0600 /home/emory/.ssh/config &&
 cp /vagrant/private/pNZXklje_id_rsa /home/emory/.ssh &&
 chmod 0600 /home/emory/.ssh/pNZXklje_id_rsa &&
@@ -34,7 +35,7 @@ EOF
 (cat > /usr/local/sbin/smallskunk.sh <<EOF
 #!/bin/bash
 
-su --login emory --command cd/home/emory/.password-store &&
+su --login emory --command cd /home/emory/.password-store &&
 git push origin master &&
 true
 EOF
