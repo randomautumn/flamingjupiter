@@ -36,7 +36,7 @@ ExecStart=/usr/bin/su --login emory --command "cd /home/emory/.password_store &&
 WantedBy=multi-user.target
 EOF
 ) &&
-(cat > /usrlib/systemd/system/smallskunk.timer <<EOF
+(cat > /usr/lib/systemd/system/smallskunk.timer <<EOF
 [Unit]
 Description=Small Skunk Password Persistence Timer
 
