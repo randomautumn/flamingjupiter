@@ -21,7 +21,7 @@ echo trusted-key AE695B97BEAC2885 >> /home/emory/.gnupg/gpg.conf &&
 pass git init &&
 cd /home/emory/.password-store &&
 git remote add origin git@github.com:randomautumn/pinkparachute.git &&
-git fetch remote &&
+git fetch origin &&
 cd /home/emory &&
 git clone --branch v1.0.0 git@github.com:dirtyfrostbite/wildfish.git c9sdk &&
 cd /home/emory/c9sdk &&
