@@ -32,7 +32,7 @@ true
 EOF
 ) &&
 chmod 0500 /usr/local/sbin/gammastony.sh &&
-(cat > /usr/lib/systemd/system/gammystony.service <<EOF
+(cat > /usr/lib/systemd/system/gammastony.service <<EOF
 [Unit]
 Description=Gamma Stony Jenkins Backup Service
 
