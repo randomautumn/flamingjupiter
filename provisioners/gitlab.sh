@@ -15,10 +15,8 @@ chown git:git /var/opt/gitlab/backups/* &&
 ls -1rt /var/opt/gitlab/backups/ | tail --lines 1 | sed -e "s#_gitlab_backup.tar\$##" | while read TSTAMP
 do
 echo yes | /usr/bin/gitlab-rake gitlab:backup:restore BACKUP=${TSTAMP} &&
-echo AAA 1 &&
 true
 done &&
-echo AAA 2 &&
 
 (cat > /usr/local/sbin/indigotire.sh <<EOF
 #!/usr/bin/bash
@@ -38,9 +36,7 @@ rsync --archive --delete /var/opt/gitlab/backups/ /vagrant/public/gitlab/backups
 true
 EOF
 ) &&
-echo AAA 3 &&
 chmod 0500 /usr/local/sbin/indigotire.sh &&
-echo AAA 4 &&
 (cat > /usr/lib/systemd/system/indigotire.service <<EOF
 [Unit]
 Description=Indigo Tire Gitlab Backup Service
@@ -52,7 +48,6 @@ ExecStart=/usr/local/sbin/indigotire.sh
 WantedBy=multi-user.target
 EOF
 ) &&
-echo AAA 5 &&
 (cat > /usr/lib/systemd/system/indigotire.timer <<EOF
 [Unit]
 Description=Indigo Tire Gitlab Backup Timer
@@ -66,9 +61,6 @@ Unit=indigotire.service
 WantedBy=multi-user.target
 EOF
 ) &&
-echo AAA 6 &&
 systemctl start indigotire.timer &&
-echo AAA 7 &&
 systemctl enable indigotire.timer &&
-echo AAA 8 &&
 true
