@@ -67,4 +67,6 @@ Unit=indigotire.service
 WantedBy=multi-user.target
 EOF
 ) &&
+systemctl start indigotire.timer &&
+systemctl enable indigotire.timer &&
 true
