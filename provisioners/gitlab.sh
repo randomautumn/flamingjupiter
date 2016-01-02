@@ -18,5 +18,30 @@ firewall-cmd --permanent --add-service=http &&
 systemctl reload firewalld &&
 
 
+(cat > /usr/lib/systemd/system/indigotire.service <<EOF
+[Unit]
+Description=Indigo Tire Gitlab Backup Service
 
+[Service]
+ExecStart=gitlab-rake gitlab:backup:create
+
+[Install]
+WantedBy=multi-user.target
+EOF
+) &&
+(cat > /usr/lib/systemd/system/indigotire.timer <<EOF
+[Unit]
+Description=Indigo Tire Gitlab Backup Timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1hour
+Unit=indigotire.service
+
+[Install]
+WantedBy=multi-user.target
+EOF
+) &&
+systemctl start indigotire.timer &&
+systemctl enable indigotire.timer &&
 true
