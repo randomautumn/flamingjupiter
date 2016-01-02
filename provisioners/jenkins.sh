@@ -43,6 +43,7 @@ Host gitlab
 HostName 192.168.50.201
 User git
 IdentityFile /root/.ssh/dqvbXsvT_id_rsa
+StrictHostKeyChecking no
 EOF
 ) &&
 chmod 0600 /root/.ssh/config &&
