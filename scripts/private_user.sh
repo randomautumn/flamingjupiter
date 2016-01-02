@@ -35,7 +35,7 @@ EOF
 (cat > /usr/local/sbin/smallskunk.sh <<EOF
 #!/bin/bash
 
-su --login emory --command cd /home/emory/.password-store &&
+su --login emory --command "cd /home/emory/.password-store" &&
 git push origin master &&
 true
 EOF
