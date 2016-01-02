@@ -20,6 +20,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.define "gitlab" do |box|
     box.vm.box = "Skilled Drill"
+    config.vm.network "private_network", ip: "192.168.50.201"
     box.vm.network "forwarded_port", guest: 80, host: 25672
     box.vm.network "forwarded_port", guest: 80, host: 25673
     box.vm.network "forwarded_port", guest: 80, host: 25674
@@ -31,6 +32,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.define "jenkins" do |box|
     box.vm.box = "Skilled Drill"
+    config.vm.network "private_network", ip: "192.168.50.202"
     box.vm.network "forwarded_port", guest: 8080, host: 25675
     box.vm.network "forwarded_port", guest: 8080, host: 25676
     box.vm.network "forwarded_port", guest: 8080, host: 25677
