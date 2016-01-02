@@ -31,8 +31,8 @@ rm --recursive --force ${WORK_DIR} &&
 true
 EOF
 ) &&
-chmod 0500 /usr/local/sbin/indigotire.sh &&
-(cat > /usr/lib/systemd/system/indigotire.service <<EOF
+chmod 0500 /usr/local/sbin/gammastony.sh &&
+(cat > /usr/lib/systemd/system/gammystony.service <<EOF
 [Unit]
 Description=Gamma Stony Jenkins Backup Service
 
