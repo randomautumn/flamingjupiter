@@ -21,9 +21,9 @@ Vagrant.configure(2) do |config|
   config.vm.define "gitlab" do |box|
     box.vm.box = "Skilled Drill"
     config.vm.network "private_network", ip: "192.168.50.201"
-    box.vm.network "forwarded_port", guest: 80, host: 25672
-    box.vm.network "forwarded_port", guest: 80, host: 25673
-    box.vm.network "forwarded_port", guest: 80, host: 25674
+    box.vm.network "forwarded_port", guest: 80, host: 27883
+    box.vm.network "forwarded_port", guest: 80, host: 27884
+    box.vm.network "forwarded_port", guest: 80, host: 27885
     box.vm.network "forwarded_port", guest: 22, host: 21393
     box.ssh.username="vagrant"
     box.ssh.private_key_path="/Users/emorymerryman/.ssh/xvIpSE0A_id_rsa"
@@ -33,9 +33,9 @@ Vagrant.configure(2) do |config|
   config.vm.define "jenkins" do |box|
     box.vm.box = "Skilled Drill"
     config.vm.network "private_network", ip: "192.168.50.202"
-    box.vm.network "forwarded_port", guest: 8080, host: 25675
-    box.vm.network "forwarded_port", guest: 8080, host: 25676
-    box.vm.network "forwarded_port", guest: 8080, host: 25677
+    box.vm.network "forwarded_port", guest: 8080, host: 27892
+    box.vm.network "forwarded_port", guest: 8080, host: 27893
+    box.vm.network "forwarded_port", guest: 8080, host: 27894
     box.vm.network "forwarded_port", guest: 22, host: 21394
     box.ssh.username="vagrant"
     box.ssh.private_key_path="/Users/emorymerryman/.ssh/xvIpSE0A_id_rsa"
