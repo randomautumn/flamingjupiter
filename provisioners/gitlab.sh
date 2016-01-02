@@ -11,6 +11,7 @@ firewall-cmd --reload &&
 
 mkdir --parents /vagrant/public/gitlab/backups &&
 cp /vagrant/public/gitlab/backups/* /var/opt/gitlab/backups &&
+chown git:git /var/opt/gitlab/backups/* &&
 ls -1rt /var/opt/gitlab/backups/ | tail --lines 1 | sed -e "s#_gitlab_backup.tar\$##" | while read TSTAMP
 do
 echo yes | /usr/bin/gitlab-rake gitlab:backup:restore BACKUP=${TSTAMP} &&
