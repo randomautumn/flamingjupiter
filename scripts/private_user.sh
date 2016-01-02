@@ -19,7 +19,7 @@ git config --global user.email "emory.merryman@gmail.com" &&
 git config --global user.signingkey BEAC2885 &&
 echo trusted-key AE695B97BEAC2885 >> /home/emory/.gnupg/gpg.conf &&
 pass git init &&
-cd /home/emory/.password_store &&
+cd /home/emory/.password-store &&
 git remote add origin git@github.com:randomautumn/pinkparachute.git &&
 git fetch remote &&
 cd /home/emory &&
