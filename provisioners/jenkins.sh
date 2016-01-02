@@ -1,6 +1,7 @@
 #!/bin/bash
 
 dnf install --assumeyes jenkins &&
+mkdir --parents /vagrant/public/jenkins/backups &&
 ls -1rt /vagrant/public/jenkins/backups/ | tail --lines 1 | while read FILE
 do
 WORK_DIR=$(mktemp -d) &&
@@ -15,11 +16,7 @@ done &&
 TSTAMP=$(date +%s) &&
 WORK_DIR=$(mktemp -d) &&
 tar --create --file ${WORK_DIR}/${TSTAMP}.tar --directory /var/lib/jenkins . &&
-if [ ! -d /vagrant/public/jenkins/backups ]
-then
 mkdir --parents /vagrant/public/jenkins/backups &&
-true
-fi &&
 gzip -9 --to-stdout ${WORK_DIR}/${TSTAMP}.tar /vagrant/public/jenkins/backups &&
 ls -1tr /var/opt/jenkins/backups/ | head --lines -10 | while read FILE
 do

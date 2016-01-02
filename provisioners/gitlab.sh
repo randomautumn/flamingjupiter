@@ -9,11 +9,8 @@ gitlab-ctl reconfigure &&
 firewall-cmd --permanent --add-service=http &&
 firewall-cmd --reload &&
 
-if [ -d /vagrant/public/gitlab/backups ]
-then
+mkdir --parents /vagrant/public/gitlab/backups &&
 cp /vagrant/public/gitlab/backups/* /var/opt/gitlab/backups &&
-true
-fi &&
 ls -1rt /var/opt/gitlab/backups/ | tail --lines 1 | sed -e "s#_gitlab_backup.tar\$##" | while read TSTAMP
 do
 echo yes | /usr/bin/gitlab-rake gitlab:backup:restore BACKUP=${TSTAMP} &&
@@ -33,11 +30,7 @@ true
 fi &&
 true
 done &&
-if [ ! -d /vagrant/public/gitlab/backups ]
-then
 mkdir --parents /vagrant/public/gitlab/backups &&
-true
-fi &&
 rsync --archive --delete /var/opt/gitlab/backups/ /vagrant/public/gitlab/backups &&
 true
 EOF
