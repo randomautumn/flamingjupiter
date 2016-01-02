@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.define "smalljazz" do |box|
     box.vm.box = "Skilled Drill"
+    config.vm.network "private_network", ip: "192.168.51.201"
     box.vm.network "forwarded_port", guest: 26647, host: 25671
     box.ssh.username="vagrant"
     box.ssh.private_key_path="/Users/emorymerryman/.ssh/xvIpSE0A_id_rsa"
