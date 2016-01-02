@@ -31,12 +31,21 @@ export PATH=/opt/gcc/bin:${PATH} &&
 true
 EOF
 ) &&
+(cat > /usr/local/sbin/smallskunk.sh <<EOF
+#!/bin/bash
+
+su --login emory --command cd/home/emory/.password-store &&
+git push origin master &&
+true
+EOF
+) &&
+chmod 0500 /usr/local/sbin/smallskunk.sh &&
 (cat > /usr/lib/systemd/system/smallskunk.service <<EOF
 [Unit]
 Description=Small Skunk Password Persistence Service
 
 [Service]
-ExecStart=/usr/bin/su --login emory --command "cd /home/emory/.password_store && git push origin master"
+ExecStart=/usr/local/sbin/smallskunk.sh
 
 [Install]
 WantedBy=multi-user.target
