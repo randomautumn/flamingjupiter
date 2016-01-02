@@ -58,6 +58,6 @@ EOF
 ) &&
 systemctl start jenkins &&
 systemctl enable jenkins &&
-systemctl start gammastony &&
-systemctl enable gammastony &&
+systemctl start gammastony.timer &&
+systemctl enable gammastony.timer &&
 true
