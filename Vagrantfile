@@ -28,7 +28,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.define "jenkins" do |box|
     box.vm.box = "Skilled Drill"
-    box.vm.network "forwarded_port", guest: 26648, host: 25673
+    box.vm.network "forwarded_port", guest: 8080, host: 25673
     box.ssh.username="vagrant"
     box.ssh.private_key_path="/Users/emorymerryman/.ssh/xvIpSE0A_id_rsa"
     box.ssh.forward_x11="yes"

@@ -11,13 +11,18 @@ chmod 0600 /home/emory/.ssh/config &&
 cp /vagrant/private/pNZXklje_id_rsa /home/emory/.ssh &&
 chmod 0600 /home/emory/.ssh/pNZXklje_id_rsa &&
 gpg --allow-secret-key-import --import /vagrant/private/secret.gpg.key &&
-git clone git@github.com:randomautumn/pinkparachute.git .password_store &&
-cd .password_store &&
-git config user.name "Emory Merryman" &&
-git config user.email "emory.merryman@gmail.com" &&
-git config user.signingkey BEAC2885 &&
-cd .. &&
 mkdir workspace &&
+pass init BEAC2885 &&
+git config --global user.name "Emory Merryman" &&
+git config --global user.email "emory.merryman@gmail.com" &&
+git config --global user.signingkey BEAC2885 &&
+echo trusted-key AE695B97BEAC2885 >> /home/emory/.gnupg/gpg.conf &&
+pass git init &&
+cd workspace &&
+cd .. &&
+cd .password_store &&
+git remote add origin git@github.com:randomautumn/pinkparachute.git
+cd .. &&
 git clone --branch v1.0.0 git@github.com:dirtyfrostbite/wildfish.git c9sdk &&
 cd c9sdk &&
 export PATH=/opt/gcc/bin:${PATH} &&
