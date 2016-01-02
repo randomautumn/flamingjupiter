@@ -18,9 +18,9 @@ WORK_DIR=$(mktemp -d) &&
 tar --create --file ${WORK_DIR}/${TSTAMP}.tar --directory /var/lib/jenkins . &&
 mkdir --parents /vagrant/public/jenkins/backups &&
 gzip -9 --to-stdout ${WORK_DIR}/${TSTAMP}.tar /vagrant/public/jenkins/backups &&
-ls -1tr /var/opt/jenkins/backups/ | head --lines -10 | while read FILE
+ls -1tr /var/lib/jenkins/ | head --lines -10 | while read FILE
 do
-if [ $(60 * 60) -lt $(($(date +%s) - $(stat --format %X /var/opt/jenkins/backups/${FILE}))) ]
+if [ $(60 * 60) -lt $(($(date +%s) - $(stat --format %X /var/lib/jenkins/${FILE}))) ]
 then
 rm /var/opt/gitlab/jenkins/${FILE} &&
 true
