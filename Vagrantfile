@@ -34,5 +34,13 @@ Vagrant.configure(2) do |config|
     box.ssh.forward_x11="yes"
     box.vm.provision :shell, path: "provisioners/jenkins.sh"
   end
+  config.vm.define "git" do |box|
+    box.vm.box = "Skilled Drill"
+    box.vm.network "forwarded_port", guest: 22, host: 25674
+    box.ssh.username="vagrant"
+    box.ssh.private_key_path="/Users/emorymerryman/.ssh/xvIpSE0A_id_rsa"
+    box.ssh.forward_x11="yes"
+    box.vm.provision :shell, path: "provisioners/git.sh"
+  end
 end
 #
