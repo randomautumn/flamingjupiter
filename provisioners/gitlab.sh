@@ -19,7 +19,7 @@ done &&
 #!/usr/bin/bash
 
 /usr/bin/gitlab-rake gitlab:backup:create
-ls -1tr /var/opt/gitlab/backups | head --lines -10 | while read FILE
+ls -1tr /var/opt/gitlab/backups/ | head --lines -10 | while read FILE
 do
 if [ $(60 * 60) -lt $(($(date +%s) - $(stat --format %X /var/opt/gitlab/backups/${FILE}))) ]
 then
