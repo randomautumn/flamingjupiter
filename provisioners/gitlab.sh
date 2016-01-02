@@ -9,16 +9,21 @@ gitlab-ctl reconfigure &&
 firewall-cmd --permanent --add-service=http &&
 firewall-cmd --reload &&
 
+if [ -d /vagrant/public/gitlab/backups ]
+then
+cp /vagrant/public/gitlab/backups/* /var/opt/gitlab/backups &&
+true
+fi &&
 ls -1rt /var/opt/gitlab/backups/ | tail --lines 1 | sed -e "s#_gitlab_backup.tar\$##" | while read TSTAMP
 do
-echo yes | gitlab-rake gitlab:backup:restore BACKUP=${TSTAMP} &&
+echo yes | /usr/bin/gitlab-rake gitlab:backup:restore BACKUP=${TSTAMP} &&
 true
 done &&
 
 (cat > /usr/local/sbin/indigotire.sh <<EOF
 #!/usr/bin/bash
 
-/usr/bin/gitlab-rake gitlab:backup:create
+/usr/bin/gitlab-rake gitlab:backup:create &&
 ls -1tr /var/opt/gitlab/backups/ | head --lines -10 | while read FILE
 do
 if [ $(60 * 60) -lt $(($(date +%s) - $(stat --format %X /var/opt/gitlab/backups/${FILE}))) ]
@@ -28,6 +33,13 @@ true
 fi &&
 true
 done &&
+if [ ! -d /vagrant/public/gitlab/backups ]
+then
+mkdir --parents /vagrant/public/gitlab/backups &&
+true
+fi &&
+rsync --archive --delete /var/opt/gitlab/backups/ /vagrant/public/gitlab/backups &&
+true
 EOF
 ) &&
 chmod 0500 /usr/local/sbin/indigotire.sh &&
