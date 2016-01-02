@@ -22,6 +22,7 @@ pass git init &&
 cd /home/emory/.password-store &&
 git remote add origin git@github.com:randomautumn/pinkparachute.git &&
 git fetch origin &&
+git rebase origin/master &&
 cd /home/emory &&
 git clone --branch v1.0.0 git@github.com:dirtyfrostbite/wildfish.git c9sdk &&
 cd /home/emory/c9sdk &&
