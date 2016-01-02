@@ -12,8 +12,8 @@ ExecStart=/usr/bin/su --login emory --command "/usr/bin/node /home/emory/c9sdk/s
 WantedBy=multi-user.target
 EOF
 ) &&
-systemctl disable firewalld &&
 systemctl stop firewalld &&
+systemctl disable firewalld &&
 systemctl start magentaknife.service &&
 systemctl enable magentaknife.service &&
 true
