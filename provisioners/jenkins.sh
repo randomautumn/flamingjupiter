@@ -55,7 +55,7 @@ ls -1rt /vagrant/public/jenkins/backups/ | tail --lines 1 | while read FILE
 do
 WORK_DIR=$(mktemp -d) &&
 gunzip --to-stdout /vagrant/public/jenkins/backups/${FILE} > ${WORK_DIR}/${FILE}.tar &&
-tar --extract --file ${WORK_DIR}/${FILE}.tar --directory /var/lib/jenkiins &&
+tar --extract --file ${WORK_DIR}/${FILE}.tar --directory /var/lib/jenkins &&
 rm --recursive --force ${WORK_DIR} &&
 true
 done &&
