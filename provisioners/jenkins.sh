@@ -49,7 +49,7 @@ EOF
 chmod 0600 /root/.ssh/config &&
 git remote add origin gitlab:backups/jenkins.git &&
 git fetch origin &&
-git rebase origin/master &&
+git checkout master &&
 mkdir --parents /vagrant/public/jenkins/backups &&
 ls -1rt /vagrant/public/jenkins/backups/ | tail --lines 1 | while read FILE
 do
