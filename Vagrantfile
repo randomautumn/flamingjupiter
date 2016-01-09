@@ -14,6 +14,7 @@ Vagrant.configure(2) do |config|
     box.vm.box = "Skilled Drill"
     config.vm.network "private_network", ip: "192.168.50.101"
     box.vm.network "forwarded_port", guest: 26647, host: 25671
+    box.vm.network "forwarded_port", guest: 24926, host: 24926
     box.ssh.username="vagrant"
     box.ssh.private_key_path="/Users/emorymerryman/.ssh/xvIpSE0A_id_rsa"
     box.ssh.forward_x11="yes"
