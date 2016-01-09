@@ -52,14 +52,5 @@ Vagrant.configure(2) do |config|
     box.ssh.forward_x11="yes"
     box.vm.provision :shell, path: "provisioners/git.sh"
   end
-  config.vm.define "ghastlydonut" do |box|
-    box.vm.box = "Skilled Drill"
-    config.vm.network "private_network", ip: "192.168.50.101"
-    box.vm.network "forwarded_port", guest: 26647, host: 25675
-    box.ssh.username="vagrant"
-    box.ssh.private_key_path="/Users/emorymerryman/.ssh/xvIpSE0A_id_rsa"
-    box.ssh.forward_x11="yes"
-    box.vm.provision :shell, path: "provisioners/ghastlydonut.sh"
-  end
 end
 #
