@@ -34,6 +34,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.define "jenkins" do |box|
     box.vm.box = "Skilled Drill"
+    box.vm.synced_folder "persistence/jenkins", "/opt/jenkins" , create: true, owner: "jenkins", group: "jenkins"
     config.vm.network "private_network", ip: "192.168.50.202"
     box.vm.network "forwarded_port", guest: 8080, host: 27892
     box.vm.network "forwarded_port", guest: 8080, host: 27893
